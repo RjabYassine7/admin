@@ -7,11 +7,20 @@ sleep 1
 echo " Nous vérifierons les information et les payement et vous contacterons @@@@@ bonne journée @@@@@  "
 }
 
-planning(){
-
-/home/yassine/Bureau/Workspace/desExerice/Ss2
-
+Planning()
+{
+zenity --list \
+  --title="Consult Client" \
+  --column="Jour" --column="De" --column="Jusqu'à" \
+         "Lundi" "6AM" "10PM" \
+         "Mardi" "6AM" "10PM" \
+         "Mercredi" "6AM" "10PM" \
+         "Jeudi" "6AM" "10PM" \
+         "Vendredi" "6AM" "10PM" \
+         "Samdi" "6AM" "10PM" \
+         "Dimanche" "6AM" "10PM" \
 }
+
 
 menu=("Tarifs" "Planning")
 answer=`zenity --list --column=Menu "${menu[@]}" --height 170`
