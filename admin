@@ -1,0 +1,83 @@
+#!/bin/bash
+
+addNewclient(){
+cfgpass=`zenity --forms \
+    --title="bienvenue" \
+    --text="Ajoute un nouveau client" \
+    --add-entry="Nom de client" \
+    --add-entry="Prenom de client " \
+    --add-entry="Numero CIN " \
+    --add-entry=" Age " \
+    --separator="|"`
+if [ "$?" -eq 1 ]; then
+    exit
+fi
+sleep 1
+
+echo "Les Informations a Enregistrer" | cut -d "|" -f1 #Nom de l'utilisateur
+
+}
+
+cons()
+{
+zenity --list \
+  --title="Fiche de Contrôle Clientes " --text "" \
+  --column="ID " --column="Nom" --column="Prenom" --column="CIN" --column="Payement" --column="NUM Tel°" \
+        "07" "Ahmed" "khalil"   "09682728"    "NON" "23001502" \
+        "02"  "Asma" "Achour"   "13130356"   "Oui"  "92572526" \
+        "04"  "Moez" "Chebli"   "07637001"   "Oui"  "51687987" \
+        "12"  "Firas" "Chawat"  "11055146"  "NON"   "54672892" \
+        "45"  "Gharbi" "Habiba" "00637288" "Oui"    "29000312" \
+        "23"  "Ons" "Maayouf"   "10567789"   "Oui"  "20777252" \
+        "10"  "Namochi" "Sabri" "14357280" "Oui"    "93760501" \
+        "08"  "Agherbi" "Hamza" "15637288" "Oui"    "53415620" \
+        "11"  "stephan" "Nater" "12683908" "NON"    "90001502" \
+        "30" "BenAmara" "Nabil" "14418170"  "Oui"   "23701200"
+}
+
+pass(){
+
+ENTRY=`zenity --password `
+
+case $? in
+         0) while [[  -z  $ENTRY ]] 
+                do
+                 ENTRY=`zenity --password `
+                done
+                sleep 1
+                lien
+        ;;
+         1) zenity --notification\
+    --window-icon="info" \
+    --text="Erreur !!! Stop Login ";;
+ 
+       -1)
+                echo "An unexpected error has occurred.";;
+esac
+}
+
+
+lien(){
+
+file=$(zenity --width=360 --height=320 --list --title "Menu" --text "veuillez choisir l'une des options suivantes  :" --column GYM "Ajout un client" "F>
+
+if [ "$file" = "Ajout un client" ]; then
+
+        addNewclient
+
+elif [ "$file" = "Fiche de Contrôle Clientes" ]; then
+
+         cons
+
+elif [ "$file" = "Achat Matériel en ligne" ]; then
+  xdg-open https://www.panattasport.com/fr/default.html
+
+
+ exit 0
+
+fi
+
+}
+
+pass
+
