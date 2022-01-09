@@ -1,0 +1,26 @@
+!/bin/bash
+
+
+payement(){
+retour=$(yad --form --field="Payement En Ligne":BTN --image="/home/yassine/Téléchargements/image.png" --field="CIN":NUM --field="Carte Bancair":CHK --f>
+sleep 1
+echo " Nous vérifierons les information et les payement et vous contacterons @@@@@ bonne journée @@@@@  "
+}
+
+planning(){
+
+/home/yassine/Bureau/Workspace/desExerice/Ss2
+
+}
+
+menu=("Tarifs" "Planning")
+answer=`zenity --list --column=Menu "${menu[@]}" --height 170`
+if [ "$answer" = "Planning" ]; then
+        planning
+        exit
+else
+         payement
+
+fi
+
+
