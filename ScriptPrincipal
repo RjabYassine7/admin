@@ -1,0 +1,63 @@
+#!/bin/bash
+
+banner(){
+figlet -f slant -c "GYM Max" | lolcat && figlet -f digital -c "Sport Team" | lolcat
+}
+interrupt(){
+        printf "\e[0m\n"
+        printf "\n\e[0m\e[1;36m\t *◡*  Exiting ... THANK YOU ! *◡* \n"
+        sleep 1
+        printf "\e[0m\n"
+        exit 1
+}
+
+start() {
+        printf "\n"
+        printf "                   \e[1;90m     Welcome to my\e[0m\e[1;95m G Y M\e[0m\e[1;90m ! ! !    \e[0m\n" 
+        printf "\n"
+        printf "\n\e[1;33m adm - \e[0m\e[1;33m Espace Administrateur  \e[0m\e\n" | pv -qL 100
+        printf "\n[1;33m cl - \e[0m\e[1;33m  Espace Client  \e[0m\e\n" | pv -qL 100
+        printf "\n\n\e[33m Press \e[0m\e[1;33mq \e[0m\e[33mOR \e[0m\e[1;33mCTRL+C \e[0m\e[33mto Exit.\e[0m\n\n" | pv -qL 100
+        read -p $'\e[1;96m->\e[0m Enter your choice: ' user_choice
+        clear
+
+case $user_choice in
+        pkg)
+                clear
+                #chmod 777 ScriptPrincipal
+                #apt-get update
+                sudo apt-get install -y scriptPrincipal
+        ;;
+        adm)    
+                chmod 777 admin
+                ./admin
+        ;;
+
+         cl)    
+                chmod 777 utilisteur
+                ./utilisteur
+        ;;
+  q)
+                interrupt
+        ;;
+
+        *)
+                printf "\n\e[31m INVALID OPTION! ❌\e[0m\n"
+        ;;
+        esac;
+        read -p $'\n\n\e[1;96m ->\e[0m Press q to exit, Press Enter OR Anything else to Return to Main Menu: ' is_exit
+        if [[ $is_exit == "q" ]];
+        then user_interrupt
+        fi
+        clear
+
+}
+clear
+while :
+do
+banner
+start
+done
+
+
+
